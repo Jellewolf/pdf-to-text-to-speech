@@ -22,6 +22,7 @@ exit_message: str = "Thanks for using the converter!"
 converted_files_list = []
 
 
+# converts another file for the user
 def convert_another_file():
     another_file = input("Would you like to convert another file?")
     if another_file == 'no'.lower():
@@ -35,6 +36,8 @@ def convert_another_file():
         convert_another_file()
 
 
+# lets the user listen to the converted file
+# if input is unrecognized it recalls its own function
 def listen_to_converted_file(text_to_convert):
     user_response = input("Would you like to listen to the converted file?")
     if user_response == 'yes'.lower():
@@ -47,8 +50,10 @@ def listen_to_converted_file(text_to_convert):
         listen_to_converted_file(text_to_convert)
 
 
+# main loop of the program
 def start():
     while True:
+        # adding a random number to the file name ensures every file is saved separately
         random_int: int = random.randint(0, 200)
         file_name = "converted_pdf_file" + str(random_int) + ".mp3"
         converted_files_list.append(file_name)
@@ -70,4 +75,5 @@ def start():
         listen_to_converted_file(text_to_convert)
 
 
+# initialize the main loop
 start()
