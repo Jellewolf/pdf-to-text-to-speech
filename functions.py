@@ -1,5 +1,9 @@
+import os
+import random
+
 import PyPDF2
 import pyttsx3
+from gtts import gTTS
 
 
 def return_text_to_speech(text_input):
@@ -20,3 +24,18 @@ def read_file(file_to_read: str):
     from_page = pdf_reader.pages[0]
     text = from_page.extract_text()
     return text
+
+
+def save_converted_file(text_to_convert):
+    # determine the path where the converted file should be saved to
+    save_path: str = os.path.expanduser('~') + "\\Downloads\\"
+    language: str = 'en'
+    random_int: int = random.randint(0, 200)
+    file_name = "converted_pdf_file" + str(random_int) + ".mp3"
+
+    # convert the file into a TTS file
+    converted_file = gTTS(text=text_to_convert, lang=language, slow=False)
+
+    # save the file in the set path with the set name
+    converted_file.save(save_path + file_name)
+    print("File has been saved in: " + save_path + " as: " + file_name)
