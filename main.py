@@ -17,7 +17,7 @@ import sys
 
 import functions
 
-exit_message: str = "Thanks for using the converter!"
+EXIT_MESSAGE_STRING: str = "Thanks for using the converter!"
 
 converted_files_list = []
 
@@ -64,7 +64,7 @@ def start():
             start()
         save_file_bool = input("Would you like to save the converted file?")
         if not save_file_bool == 'yes'.lower():
-            print(exit_message)
+            print(EXIT_MESSAGE_STRING)
             sys.exit()
         if selected_type == 'TXT'.lower():
             text_to_convert = functions.convert_from_text(file_to_read)
